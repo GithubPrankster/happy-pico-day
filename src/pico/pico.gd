@@ -28,7 +28,7 @@ func refresh():
 		anim.play("ded-loop")
 	else:
 		anim.play("idle-loop")
-	face.albedo_texture = pico_states[picoday.ultraviolence]
+	face.set_shader_param("tex", pico_states[picoday.ultraviolence])
 
 func punch():
 	if anim.is_playing():
@@ -44,15 +44,15 @@ func punch():
 		picoday.ultraviolence = 1
 	if picoday.punches > 50:
 		picoday.ultraviolence = 2
-		head.albedo_color = Color("#f2b58b")
+		head.set_shader_param("mixer", Color("#f2b58b"))
 	if picoday.punches > 125:
 		picoday.ultraviolence = 3
-		head.albedo_color = Color("#e6a67b")
+		head.set_shader_param("mixer", Color("#e6a67b"))
 	if picoday.punches > 275:
 		picoday.ultraviolence = 4
-		head.albedo_color = Color("#e68d64")
+		head.set_shader_param("mixer", Color("#e68d64"))
 	
-	face.albedo_texture = pico_punches[picoday.ultraviolence]
+	face.set_shader_param("tex", pico_punches[picoday.ultraviolence])
 	
 	streamer.stream = sounds[int(rand_range(0.0, sounds.size()))]
 	streamer.pitch_scale = rand_range(0.8,1.0)
@@ -69,5 +69,7 @@ func punch():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("punch") and picoday.keyed:
+	if Input.is_action_just_pressed("enter_picoman") and picoday.keyed:
+		picoday.locked = true
+	if Input.is_action_just_pressed("punch") and picoday.locked:
 		punch()

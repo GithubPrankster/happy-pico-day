@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/sound/calm_punch.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/pico/title.png" type="Texture" id=2]
@@ -23,13 +23,17 @@
 [ext_resource path="res://assets/sound/pico_eough.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/sound/pico_aah.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sound/pico_knockout.wav" type="AudioStream" id=23]
-[ext_resource path="res://assets/font/FerriteCoreDX-Black.otf" type="DynamicFontData" id=24]
+[ext_resource path="res://assets/font/ferrite.tres" type="DynamicFont" id=24]
 [ext_resource path="res://assets/punch/punch.tscn" type="PackedScene" id=25]
 [ext_resource path="res://addons/newgrounds/NewGroundsAPI.gd" type="Script" id=26]
+[ext_resource path="res://assets/ui/press_pill.png" type="Texture" id=27]
+[ext_resource path="res://assets/ui/pill.png" type="Texture" id=28]
+[ext_resource path="res://assets/ui/unselect_pill.png" type="Texture" id=29]
+[ext_resource path="res://assets/font/FerriteCoreDX-Black.otf" type="DynamicFontData" id=30]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 24 )
+size = 20
+font_data = ExtResource( 30 )
 
 [node name="world" type="Spatial"]
 script = ExtResource( 3 )
@@ -64,9 +68,56 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="logger" type="TextureButton" parent="ui"]
+self_modulate = Color( 0.545098, 0.933333, 0.196078, 1 )
+margin_left = 3.33183
+margin_top = 328.236
+margin_right = 151.332
+margin_bottom = 357.569
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
+expand = true
+
+[node name="label" type="Label" parent="ui/logger"]
+margin_right = 148.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.419608, 0.121569, 1 )
+text = "log on NG"
+align = 1
+
+[node name="stuff" type="Label" parent="ui"]
+self_modulate = Color( 0.972549, 0.266667, 0.843137, 1 )
+margin_left = 5.0
+margin_top = -1.0
+margin_right = 129.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 24 )
+text = "gifts: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hint" type="Label" parent="ui"]
+self_modulate = Color( 0.266667, 0.972549, 0.87451, 1 )
+anchor_top = 0.342
+anchor_bottom = 0.342
+margin_left = 205.0
+margin_top = 165.0
+margin_right = 435.0
+margin_bottom = 194.0
+custom_fonts/font = ExtResource( 24 )
+text = "press enter!"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="fadester" type="ColorRect" parent="ui"]
 margin_right = 640.0
 margin_bottom = 360.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -93,21 +144,8 @@ grunts = [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource(
 [node name="gplayer" type="AudioStreamPlayer" parent="pico"]
 volume_db = -12.117
 
-[node name="stuff" type="Label" parent="."]
-self_modulate = Color( 0.972549, 0.266667, 0.843137, 1 )
-margin_left = 5.0
-margin_top = -1.0
-margin_right = 129.0
-margin_bottom = 28.0
-custom_fonts/font = SubResource( 1 )
-text = "gifts: 0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="punch" parent="." instance=ExtResource( 25 )]
 transform = Transform( -0.05, 0, -0.0866025, 0, 0.1, 0, 0.0866025, 0, -0.05, -0.291379, 0.6963, 1.01136 )
 
 [node name="NewGroundsAPI" type="HTTPRequest" parent="."]
 script = ExtResource( 26 )
-applicationId = ""

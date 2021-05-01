@@ -5,3 +5,4 @@ var ultraviolence : int = 0
 var punches : int = 0
 
 var keyed : bool = false
+var locked : bool = false

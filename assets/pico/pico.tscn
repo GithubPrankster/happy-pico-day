@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/pico/pico.glb" type="PackedScene" id=1]
 [ext_resource path="res://assets/pico/DARK_SWEATER.tres" type="Material" id=2]
-[ext_resource path="res://assets/pico/HAIR.tres" type="Material" id=3]
+[ext_resource path="res://assets/shading_nocull.shader" type="Shader" id=3]
 [ext_resource path="res://assets/pico/FACE.tres" type="Material" id=4]
 [ext_resource path="res://assets/pico/SKIN.tres" type="Material" id=5]
 [ext_resource path="res://assets/pico/SWEATER.tres" type="Material" id=6]
 [ext_resource path="res://assets/pico/HEAD_SKIN.tres" type="Material" id=7]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/mixer = Color( 1, 0.411765, 0.0235294, 1 )
 
 [node name="pico" instance=ExtResource( 1 )]
 
@@ -14,7 +18,7 @@
 material/0 = ExtResource( 7 )
 
 [node name="Cube001" parent="Armature/Skeleton" index="1"]
-material/0 = ExtResource( 3 )
+material/0 = SubResource( 2 )
 
 [node name="Cube002" parent="Armature/Skeleton" index="2"]
 material/0 = ExtResource( 2 )

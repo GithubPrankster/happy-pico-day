@@ -1,5 +1,7 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/shading_nocull.shader" type="Shader" id=1]
 
 [resource]
-flags_unshaded = true
-vertex_color_use_as_albedo = true
+shader = ExtResource( 1 )
+shader_param/mixer = Color( 1, 1, 1, 1 )

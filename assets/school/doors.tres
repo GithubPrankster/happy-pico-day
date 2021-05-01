@@ -5,5 +5,5 @@
 
 [resource]
 shader = ExtResource( 2 )
-shader_param/mixer = Color( 1, 1, 1, 1 )
+shader_param/mixer = Color( 0.921569, 0, 0, 1 )
 shader_param/tex = ExtResource( 1 )
