@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pico_knockout.wav-4ab20e5abbbe36c0c2a539851952f454.sample"
+
+[deps]
+
+source_file="res://assets/sound/pico_knockout.wav"
+dest_files=[ "res://.import/pico_knockout.wav-4ab20e5abbbe36c0c2a539851952f454.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

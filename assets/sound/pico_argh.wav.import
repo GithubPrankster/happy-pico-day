@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pico_argh.wav-9867a117aaa6f0f785eb8d6d2c50a55d.sample"
+
+[deps]
+
+source_file="res://assets/sound/pico_argh.wav"
+dest_files=[ "res://.import/pico_argh.wav-9867a117aaa6f0f785eb8d6d2c50a55d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

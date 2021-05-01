@@ -1,0 +1,113 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/sound/calm_punch.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/pico/title.png" type="Texture" id=2]
+[ext_resource path="res://src/opening.gd" type="Script" id=3]
+[ext_resource path="res://assets/school/school.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/pico/pico.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/pico/pico.gd" type="Script" id=6]
+[ext_resource path="res://assets/sound/punch.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/bonk.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/whip.wav" type="AudioStream" id=9]
+[ext_resource path="res://src/cameron.gd" type="Script" id=10]
+[ext_resource path="res://assets/pico/pico_injured.png" type="Texture" id=11]
+[ext_resource path="res://assets/pico/pico_sad.png" type="Texture" id=12]
+[ext_resource path="res://assets/pico/pico_oh.png" type="Texture" id=13]
+[ext_resource path="res://assets/pico/pico_ko.png" type="Texture" id=14]
+[ext_resource path="res://assets/pico/pico_bleed.png" type="Texture" id=15]
+[ext_resource path="res://assets/pico/pico_dearlord.png" type="Texture" id=16]
+[ext_resource path="res://assets/pico/pico_hit.png" type="Texture" id=17]
+[ext_resource path="res://assets/pico/pico_hurt.png" type="Texture" id=18]
+[ext_resource path="res://assets/pico/pico_stun.png" type="Texture" id=19]
+[ext_resource path="res://assets/sound/pico_argh.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound/pico_eough.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/sound/pico_aah.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/sound/pico_knockout.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/font/FerriteCoreDX-Black.otf" type="DynamicFontData" id=24]
+[ext_resource path="res://assets/punch/punch.tscn" type="PackedScene" id=25]
+[ext_resource path="res://addons/newgrounds/NewGroundsAPI.gd" type="Script" id=26]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 24 )
+
+[node name="world" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="adios" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -40.0
+autoplay = true
+
+[node name="ui" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.027
+margin_bottom = -9.72003
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="centerer" type="CenterContainer" parent="ui"]
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pico" type="TextureRect" parent="ui/centerer"]
+margin_left = 112.0
+margin_top = 100.0
+margin_right = 528.0
+margin_bottom = 260.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fadester" type="ColorRect" parent="ui"]
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="school" parent="." instance=ExtResource( 4 )]
+
+[node name="cameron" type="Camera" parent="."]
+transform = Transform( 0.48481, 0, 0.87462, 0, 1, 0, -0.87462, 0, 0.48481, -1.058, 0.947, 1.077 )
+script = ExtResource( 10 )
+
+[node name="pico" parent="." instance=ExtResource( 5 )]
+transform = Transform( -0.0529253, 0, -0.0848464, 0, 0.1, 0, 0.0848464, 0, -0.0529253, -0.694, 0.492, 0.816 )
+script = ExtResource( 6 )
+pico_states = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 11 ), ExtResource( 14 ) ]
+pico_punches = [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 14 ) ]
+sounds = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ) ]
+grunts = [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ) ]
+
+[node name="timer" type="Timer" parent="pico"]
+
+[node name="player" type="AudioStreamPlayer" parent="pico"]
+
+[node name="gplayer" type="AudioStreamPlayer" parent="pico"]
+volume_db = -12.117
+
+[node name="stuff" type="Label" parent="."]
+self_modulate = Color( 0.972549, 0.266667, 0.843137, 1 )
+margin_left = 5.0
+margin_top = -1.0
+margin_right = 129.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 1 )
+text = "gifts: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="punch" parent="." instance=ExtResource( 25 )]
+transform = Transform( -0.05, 0, -0.0866025, 0, 0.1, 0, 0.0866025, 0, -0.05, -0.291379, 0.6963, 1.01136 )
+
+[node name="NewGroundsAPI" type="HTTPRequest" parent="."]
+script = ExtResource( 26 )
+applicationId = ""

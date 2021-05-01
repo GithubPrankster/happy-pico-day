@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bonk.wav-0059c49f7e1fe56a8075d6d7e903e55b.sample"
+
+[deps]
+
+source_file="res://assets/sound/bonk.wav"
+dest_files=[ "res://.import/bonk.wav-0059c49f7e1fe56a8075d6d7e903e55b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
